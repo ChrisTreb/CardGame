@@ -13,7 +13,7 @@ if (GAME.gameName === "Black Jack") {
   var deckOfCards = shuffle(cards);
 
   /* HTML elements */
-  CONTAINER.innerHTML = blackJack;
+  CONTAINER.innerHTML = GAME.setUp;
   const MESSAGE = document.getElementById("message");
   const D_SIDE = document.getElementById("bj-dealer-side");
   const P_SIDE = document.getElementById("bj-player-side");
