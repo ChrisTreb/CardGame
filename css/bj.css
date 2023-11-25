@@ -12,6 +12,7 @@
   justify-content: center;
   width: 100%;
   height: 40vh;
+  border-top: 5px solid #FFFFFF;
 }
 
 #bj-buttons {
