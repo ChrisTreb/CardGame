@@ -60,6 +60,7 @@ if (GAME.gameName === "Black Jack") {
     getResults(playerPoints, dealerPoints);
     playerTurn = true;
   });
+  
   BTN_RESET.addEventListener("click", function() {
     reset();
   });
