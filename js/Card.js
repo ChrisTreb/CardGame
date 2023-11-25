@@ -60,4 +60,4 @@ function generateCard(cards, deckSize) {
 
 generateCards();
 
-export {shuffle, generateCard, cards, SIGNS, HEADS };
+export {generateCards, shuffle, generateCard, cards, SIGNS, HEADS };

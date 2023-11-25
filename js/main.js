@@ -1,4 +1,4 @@
-import { shuffle, generateCard, cards } from "./Card.js";
+import { generateCards, shuffle, generateCard, cards } from "./Card.js";
 import { Game, blackJack, setCardsValues } from "./Game.js";
 
 const CONTAINER = document.getElementById("container");
@@ -16,7 +16,6 @@ if (GAME.gameName === "Black Jack") {
 
   /* HTML elements */
   CONTAINER.innerHTML = blackJack;
-  const MESSAGE_CONTAINER = document.getElementById("message-container");
   const MESSAGE = document.getElementById("message");
   const D_SIDE = document.getElementById("bj-dealer-side");
   const P_SIDE = document.getElementById("bj-player-side");
@@ -29,7 +28,12 @@ if (GAME.gameName === "Black Jack") {
     if (playerTurn === true) {
       let card = generateCard(deckOfCards, deckOfCards.length);
       removeCard(deckOfCards);
-      console.log(deckOfCards);
+      console.log("Taille du deck : " + deckOfCards.length)
+      if(deckOfCards.length === 0) {
+        generateCards();
+        deckOfCards = shuffle(cards);
+        setCardsValues(deckOfCards);
+      }
       P_SIDE.appendChild(card);
       playerPoints += parseInt(card.getAttribute("data-value"));
       console.log("Point du joureur : " + playerPoints);
@@ -41,6 +45,12 @@ if (GAME.gameName === "Black Jack") {
     while (dealerPoints <= playerPoints) {
       let card = generateCard(deckOfCards, deckOfCards.length);
       removeCard(deckOfCards);
+      console.log("Taille du deck : " + deckOfCards.length)
+      if(deckOfCards.length === 0) {
+        generateCards();
+        deckOfCards = shuffle(cards);
+        setCardsValues(deckOfCards);
+      }
       D_SIDE.appendChild(card);
       dealerPoints += parseInt(card.getAttribute("data-value"));
       console.log("Points du dealer : " + dealerPoints);
