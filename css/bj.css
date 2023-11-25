@@ -15,6 +15,26 @@
   border-top: 5px solid #FFFFFF;
 }
 
+#dpoints {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  right: 50px;
+  top: 150px;
+  font-size: 25px;
+}
+
+#ppoints {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  right: 50px;
+  bottom: 250px;
+  font-size: 25px;
+}
+
 #bj-buttons {
   display: flex;
   align-items: center;

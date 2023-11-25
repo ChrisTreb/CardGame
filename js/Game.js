@@ -8,8 +8,12 @@ class Game {
   }
 }
 
-const blackJack = "<div id='bj-dealer-side'></div>" + 
-"<div id='bj-player-side'></div>" +
+const blackJack = "<div id='bj-dealer-side'>" +
+"<p id='dpoints'>Dealer points <span id='dpoints-value'>0</span><p/>" + 
+"</div>" + 
+"<div id='bj-player-side'>" +
+"<p id='ppoints'>Player points  <span id='ppoints-value'>0</span><p/>" + 
+"</div>" +
 "<div id='bj-buttons'>" +
 "<button class='bj-btn' id='give'>Give</button>" +
 "<button class='bj-btn' id='stop'>Stop</button>" +

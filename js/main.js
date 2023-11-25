@@ -19,6 +19,8 @@ if (GAME.gameName === "Black Jack") {
   const MESSAGE = document.getElementById("message");
   const D_SIDE = document.getElementById("bj-dealer-side");
   const P_SIDE = document.getElementById("bj-player-side");
+  const D_POINTS = document.getElementById("dpoints-value");
+  const P_POINTS = document.getElementById("ppoints-value");
   const BTN_GIVE = document.getElementById("give");
   const BTN_STOP = document.getElementById("stop");
   const BTN_RESET = document.getElementById("reset");
@@ -28,7 +30,6 @@ if (GAME.gameName === "Black Jack") {
     if (playerTurn === true) {
       let card = generateCard(deckOfCards, deckOfCards.length);
       removeCard(deckOfCards);
-      console.log("Taille du deck : " + deckOfCards.length)
       if(deckOfCards.length === 0) {
         generateCards();
         deckOfCards = shuffle(cards);
@@ -36,7 +37,7 @@ if (GAME.gameName === "Black Jack") {
       }
       P_SIDE.appendChild(card);
       playerPoints += parseInt(card.getAttribute("data-value"));
-      console.log("Point du joureur : " + playerPoints);
+      P_POINTS.innerText = playerPoints;
       getResults(playerPoints, dealerPoints);
     }
   });
@@ -45,7 +46,6 @@ if (GAME.gameName === "Black Jack") {
     while (dealerPoints <= playerPoints) {
       let card = generateCard(deckOfCards, deckOfCards.length);
       removeCard(deckOfCards);
-      console.log("Taille du deck : " + deckOfCards.length)
       if(deckOfCards.length === 0) {
         generateCards();
         deckOfCards = shuffle(cards);
@@ -53,7 +53,7 @@ if (GAME.gameName === "Black Jack") {
       }
       D_SIDE.appendChild(card);
       dealerPoints += parseInt(card.getAttribute("data-value"));
-      console.log("Points du dealer : " + dealerPoints);
+      D_POINTS.innerText = dealerPoints;
       if (dealerPoints === 21) {
         break;
       }
@@ -66,24 +66,40 @@ if (GAME.gameName === "Black Jack") {
   });
 
   function reset() {
-    D_SIDE.innerHTML = "";
-    P_SIDE.innerHTML = "";
+    let htmlCards = Array.from(document.getElementsByClassName("card"));
+    console.log(htmlCards);
+    htmlCards.forEach(card => {
+      card.remove();
+    });
     BTN_GIVE.style.display = "block";
     BTN_STOP.style.display = "block";
     MESSAGE.style.opacity = "0";
     playerPoints = 0;
     dealerPoints = 0;
-    console.log("Point du joueur : " + playerPoints +", Points du dealer : " + dealerPoints);
+    P_POINTS.innerText = playerPoints;
+    D_POINTS.innerText = dealerPoints;
   }
 
   function getResults(PPoints, DPoints) {
-    if (PPoints > 21 || DPoints === 21 || (DPoints > PPoints && DPoints <= 21)) {
+    if (DPoints === 21) {
+      MESSAGE.style.opacity = "1";
+      MESSAGE.innerHTML = "BLACK JACKED<br>YOU LOSE";
+      BTN_GIVE.style.display = "none";
+      BTN_STOP.style.display = "none";
+    }
+    if(PPoints === 21) {
+      MESSAGE.style.opacity = "1";
+      MESSAGE.innerHTML = "BLACK JACK<br>YOU WIN";
+      BTN_GIVE.style.display = "none";
+      BTN_STOP.style.display = "none";
+    }
+    if (PPoints > 21 || (DPoints > PPoints && DPoints <= 21)) {
       MESSAGE.style.opacity = "1";
       MESSAGE.innerText = "YOU LOSE";
       BTN_GIVE.style.display = "none";
       BTN_STOP.style.display = "none";
     }
-    if (DPoints > 21 || PPoints === 21 || (PPoints > DPoints && DPoints !=0)) {
+    if (DPoints > 21 || (PPoints > DPoints && DPoints !=0)) {
       MESSAGE.style.opacity = "1";
       MESSAGE.innerText = "YOU WIN";
       BTN_GIVE.style.display = "none";
