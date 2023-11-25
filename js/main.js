@@ -9,10 +9,8 @@ if (GAME.gameName === "Black Jack") {
   var playerTurn = true;
   var playerPoints = 0;
   var dealerPoints = 0;
-  var cardsPlayed = [];
   setCardsValues(cards);
   var deckOfCards = shuffle(cards);
-  console.log(deckOfCards);
 
   /* HTML elements */
   CONTAINER.innerHTML = blackJack;
@@ -41,6 +39,7 @@ if (GAME.gameName === "Black Jack") {
       getResults(playerPoints, dealerPoints);
     }
   });
+
   BTN_STOP.addEventListener("click", function() {
     playerTurn = false;
     while (dealerPoints <= playerPoints) {
@@ -57,8 +56,8 @@ if (GAME.gameName === "Black Jack") {
       if (dealerPoints === 21) {
         break;
       }
-      getResults(playerPoints, dealerPoints);
     }
+    getResults(playerPoints, dealerPoints);
     playerTurn = true;
   });
   BTN_RESET.addEventListener("click", function() {
@@ -67,7 +66,6 @@ if (GAME.gameName === "Black Jack") {
 
   function reset() {
     let htmlCards = Array.from(document.getElementsByClassName("card"));
-    console.log(htmlCards);
     htmlCards.forEach(card => {
       card.remove();
     });
@@ -87,7 +85,7 @@ if (GAME.gameName === "Black Jack") {
       BTN_GIVE.style.display = "none";
       BTN_STOP.style.display = "none";
     }
-    if(PPoints === 21) {
+    if (PPoints === 21) {
       MESSAGE.style.opacity = "1";
       MESSAGE.innerHTML = "BLACK JACK<br>YOU WIN";
       BTN_GIVE.style.display = "none";
