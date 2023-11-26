@@ -81,28 +81,24 @@ if (GAME.gameName === "Black Jack") {
 
   function getResults(PPoints, DPoints) {
     if (DPoints === 21) {
-      console.log("lose 1");
       MESSAGE.style.opacity = "1";
       MESSAGE.innerHTML = "BLACK JACKED<br>YOU LOSE";
       BTN_GIVE.style.display = "none";
       BTN_STOP.style.display = "none";
     }
     if (PPoints === 21) {
-      console.log("win 1");
       MESSAGE.style.opacity = "1";
       MESSAGE.innerHTML = "BLACK JACK<br>YOU WIN";
       BTN_GIVE.style.display = "none";
       BTN_STOP.style.display = "none";
     }
     if (PPoints > 21 || (DPoints > PPoints && DPoints < 21)) {
-      console.log("lose 2");
       MESSAGE.style.opacity = "1";
       MESSAGE.innerText = "YOU LOSE";
       BTN_GIVE.style.display = "none";
       BTN_STOP.style.display = "none";
     }
     if (DPoints > 21 || (PPoints > DPoints && DPoints !=0)) {
-      console.log("win 2");
       MESSAGE.style.opacity = "1";
       MESSAGE.innerText = "YOU WIN";
       BTN_GIVE.style.display = "none";
