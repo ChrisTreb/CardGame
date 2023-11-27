@@ -4,7 +4,7 @@ import { Game, blackJack, setCardsValues } from "./Game.js";
 const CONTAINER = document.getElementById("container");
 const GAME = new Game(1, "Black Jack", blackJack);
 
-if (GAME.gameName === "Black Jack") {
+if (GAME.id === 1) {
   /* Game Setup */
   var playerTurn = true;
   var playerPoints = 0;
@@ -81,29 +81,24 @@ if (GAME.gameName === "Black Jack") {
 
   function getResults(PPoints, DPoints) {
     if (DPoints === 21) {
-      MESSAGE.style.opacity = "1";
-      MESSAGE.innerHTML = "BLACK JACKED<br>YOU LOSE";
-      BTN_GIVE.style.display = "none";
-      BTN_STOP.style.display = "none";
+      getResultsHtmlOptions("BLACK JACKED<br>YOU LOSE");
     }
     if (PPoints === 21) {
-      MESSAGE.style.opacity = "1";
-      MESSAGE.innerHTML = "BLACK JACK<br>YOU WIN";
-      BTN_GIVE.style.display = "none";
-      BTN_STOP.style.display = "none";
+      getResultsHtmlOptions("BLACK JACK<br>YOU WIN");
     }
     if (PPoints > 21 || (DPoints > PPoints && DPoints < 21)) {
-      MESSAGE.style.opacity = "1";
-      MESSAGE.innerText = "YOU LOSE";
-      BTN_GIVE.style.display = "none";
-      BTN_STOP.style.display = "none";
+      getResultsHtmlOptions("YOU LOSE");
     }
     if (DPoints > 21 || (PPoints > DPoints && DPoints !=0)) {
-      MESSAGE.style.opacity = "1";
-      MESSAGE.innerText = "YOU WIN";
-      BTN_GIVE.style.display = "none";
-      BTN_STOP.style.display = "none";
+      getResultsHtmlOptions("YOU WIN");
     }
+  }
+
+  function getResultsHtmlOptions(message) {
+    MESSAGE.style.opacity = "1";
+    MESSAGE.innerHTML = message;
+    BTN_GIVE.style.display = "none";
+    BTN_STOP.style.display = "none";
   }
 
   function removeCard(deck) {
