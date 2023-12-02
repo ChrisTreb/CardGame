@@ -8,7 +8,9 @@ class Game {
   }
 }
 
-const blackJack = "<img id='bj-logo' src='../img/bj-logo.png' />" +
+const currentUrl = window.location;
+
+const blackJack = "<img id='bj-logo' src='" + currentUrl + "/img/bj-logo.png' />" +
 "<div id='bj-dealer-side'>" +
 "<p id='dpoints'>Dealer points <span id='dpoints-value'>0</span><p/>" + 
 "</div>" + 
