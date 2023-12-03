@@ -8,9 +8,17 @@ class Game {
   }
 }
 
-const currentUrl = window.location;
+var currentUrl = window.location;
 
-const blackJack = "<img id='bj-logo' src='" + currentUrl + "/img/bj-logo.png' />" +
+function setCurrentUrl(url) {
+  if (url.host === "127.0.0.1:5500") {
+    url = "http://127.0.0.1:5500/";
+  }
+  return url;
+}
+
+
+const blackJack = "<img id='bj-logo' src='" + setCurrentUrl(currentUrl) + "img/bj-logo.png' />" +
 "<div id='bj-dealer-side'>" +
 "<p id='dpoints'>Dealer points <span id='dpoints-value'>0</span><p/>" + 
 "</div>" + 
