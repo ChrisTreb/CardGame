@@ -1,8 +1,9 @@
 import { generateCards, shuffle, generateCard, cards } from "./Card.js";
-import { Game, blackJack, setCardsValues } from "./Game.js";
+import { Game } from "./Game.js";
+import { BLACKJACK, setCardsValues } from "./Blackjack.js";
 
 const CONTAINER = document.getElementById("container");
-const GAME = new Game(1, "Black Jack", blackJack);
+const GAME = new Game(1, "Black Jack", BLACKJACK);
 
 if (GAME.id === 1) {
   /* Game Setup */
