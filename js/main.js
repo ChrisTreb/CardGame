@@ -29,12 +29,12 @@ if (GAME.id === 1) {
     if (playerTurn === true) {
       let card = generateCard(deckOfCards, deckOfCards.length);
       removeCard(deckOfCards);
-      console.log("Cheat mode activated! Next card is : " + deckOfCards[deckOfCards.length - 1].value);
       if(deckOfCards.length === 0) {
         generateCards();
         deckOfCards = shuffle(cards);
         setCardsValues(deckOfCards);
       }
+      console.log("Cheat mode activated! Next card is : " + deckOfCards[deckOfCards.length - 1].value);
       P_SIDE.appendChild(card);
       playerPoints += parseInt(card.getAttribute("data-value"));
       P_POINTS.innerText = playerPoints;
