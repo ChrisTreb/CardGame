@@ -1,6 +1,7 @@
 #bj-logo {
-  width: 10%;
+  width: 100px;
   position: absolute;
+  top: 80px;
 }
 
 #bj-dealer-side {

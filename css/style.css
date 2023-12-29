@@ -8,12 +8,16 @@
 }
 
 #navbar {
+  width: 100vw;
   padding: 15px 50px;
   background-color: #05050A;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #navbar > div > label {
