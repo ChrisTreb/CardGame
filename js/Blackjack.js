@@ -17,7 +17,6 @@ const BLACKJACK = "<img id='bj-logo' src='" + currentUrl + "img/bj-logo.png' />"
 
 const GAME = new Game(1, "Black Jack", BLACKJACK);
 
-
 function setCardsValues(cards) {
   cards.forEach(card => {
     if (HEADS.includes(card.label)) {

@@ -7,6 +7,24 @@
   color: #fff;
 }
 
+#navbar {
+  padding: 15px 50px;
+  background-color: #05050A;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#navbar > div > label {
+  margin: 15px;
+}
+
+#navbar > div > select {
+  padding: 5px;
+  color: #05050A;
+}
+
 #message-container {
   display: flex;
   position: absolute;
